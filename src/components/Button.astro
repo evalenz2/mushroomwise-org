@@ -1,0 +1,40 @@
+---
+export interface Props {
+  href: string;
+  isPrimary?: boolean;
+  isLarge?: boolean;
+  className?: string;
+}
+
+const { 
+  href, 
+  isPrimary = false, 
+  isLarge = false,
+  className = ""
+} = Astro.props;
+
+// Base classes
+let buttonClasses = 
+  "inline-flex items-center justify-center rounded-md font-medium focus:outline-none focus:ring-2 focus:ring-offset-2 transition-colors";
+
+// Primary vs Secondary styling
+if (isPrimary) {
+  buttonClasses += " bg-amber-500 hover:bg-amber-600 text-white focus:ring-amber-500";
+} else {
+  buttonClasses += " bg-white hover:bg-gray-100 text-teal-700 focus:ring-teal-500";
+}
+
+// Size classes
+if (isLarge) {
+  buttonClasses += " px-6 py-3 text-lg";
+} else {
+  buttonClasses += " px-4 py-2 text-base";
+}
+
+// Add any custom classes
+buttonClasses += " " + className;
+---
+
+<a href={href} class={buttonClasses}>
+  <slot />
+</a>

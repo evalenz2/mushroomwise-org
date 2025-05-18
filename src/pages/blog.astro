@@ -1,0 +1,117 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Blog - Mushroom Education & Resources"
+  description="Explore our collection of articles on mushroom identification, cultivation, foraging, and more from the MushroomWise team."
+>
+  <section class="bg-teal-700 text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-bold mb-6">The MushroomWise Blog</h1>
+      <p class="text-xl max-w-3xl">
+        Educational articles, identification guides, cultivation tutorials, and mycological insights from our team of experts.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="mb-12">
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Featured Articles</h2>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {Array(3).fill(0).map((_, i) => (
+            <article class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+              <div class="h-48 bg-gray-200 flex items-center justify-center text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Featured Article Title {i + 1}</h3>
+                <p class="text-gray-600 mb-4">
+                  Brief excerpt from the article that gives a preview of the content and entices readers to click through...
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-teal-600">Category Name</span>
+                  <span class="text-sm text-gray-500">5 min read</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div>
+        <h2 class="text-3xl font-bold text-gray-900 mb-6">Recent Posts</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {Array(6).fill(0).map((_, i) => (
+            <article class="flex flex-col md:flex-row gap-6">
+              <div class="md:w-1/3 h-40 bg-gray-200 rounded-md flex items-center justify-center text-gray-400 shrink-0">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-2">Blog Post Title {i + 1}</h3>
+                <p class="text-gray-600 mb-4">
+                  Brief excerpt from the blog post that gives a preview of the content...
+                </p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm text-teal-600">Category Name</span>
+                  <span class="text-sm text-gray-500">3 min read</span>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="mt-12 text-center">
+        <button class="px-6 py-3 bg-teal-600 hover:bg-teal-700 text-white font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2">
+          Load More Articles
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Popular Categories</h2>
+      
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {['Identification', 'Cultivation', 'Foraging', 'Cooking', 'Medicinal', 'Science', 'Equipment', 'Ecology'].map(category => (
+          <a href="#" class="bg-white p-4 rounded-md shadow-sm hover:shadow-md transition-shadow text-center">
+            <h3 class="text-lg font-medium text-teal-700">{category}</h3>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 bg-teal-700 text-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-3xl font-bold mb-6">Never Miss a New Article</h2>
+      <p class="text-xl opacity-90 mb-8">
+        Subscribe to our newsletter to receive the latest blog posts and mushroom content directly in your inbox.
+      </p>
+      
+      <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input 
+          type="email" 
+          placeholder="Your email address" 
+          required
+          class="flex-grow px-4 py-3 rounded-md border border-gray-300 focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+        />
+        <button 
+          type="submit"
+          class="bg-amber-500 hover:bg-amber-600 text-white font-medium px-6 py-3 rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500 focus:ring-offset-2"
+        >
+          Subscribe
+        </button>
+      </form>
+    </div>
+  </section>
+</Layout>

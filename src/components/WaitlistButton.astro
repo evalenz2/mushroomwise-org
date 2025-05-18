@@ -1,0 +1,37 @@
+---
+export interface Props {
+  text?: string;
+  subtext?: string;
+}
+
+const {
+  text = "Join the Inner Circle Waitlist",
+  subtext = "Be the first to know when we open enrollment to our exclusive community"
+} = Astro.props;
+---
+
+<div class="text-center p-8 bg-primary-50 rounded-lg shadow-sm max-w-2xl mx-auto">
+  <h3 class="text-2xl font-bold text-primary-800 mb-3">{text}</h3>
+  <p class="text-primary-600 mb-6">{subtext}</p>
+  
+  <!-- Circle.so Waitlist Placeholder -->
+  <form class="max-w-md mx-auto">
+    <div class="flex flex-col sm:flex-row gap-3">
+      <input
+        type="email"
+        placeholder="Your email address"
+        class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+        required
+      />
+      <button type="submit" class="btn-primary whitespace-nowrap">
+        Join Waitlist
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </button>
+    </div>
+    <p class="text-xs text-gray-500 mt-3">
+      We'll only email you when membership opens or to share important community updates.
+    </p>
+  </form>
+</div>
