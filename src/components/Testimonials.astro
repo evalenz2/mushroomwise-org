@@ -1,0 +1,46 @@
+---
+import TestimonialCard from './TestimonialCard.astro';
+
+const testimonials = [
+  {
+    name: "Jamie Lewis",
+    role: "Hobby Forager",
+    quote: "MushroomWise has been an incredible resource. The identification guides helped me confidently find edible mushrooms while avoiding potentially dangerous ones.",
+    imagePlaceholder: "J"
+  },
+  {
+    name: "Sarah Chen",
+    role: "Home Cultivator",
+    quote: "The cultivation tutorials transformed my home growing setup. I've had more success in the last 3 months than in my previous 2 years of trying!",
+    imagePlaceholder: "S"
+  },
+  {
+    name: "Michael Rodriguez",
+    role: "Biology Teacher",
+    quote: "I use MushroomWise resources in my classroom to teach students about fungal ecology. The content is scientifically accurate and presented in an engaging way.",
+    imagePlaceholder: "M"
+  }
+];
+---
+
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Community Says</h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Join thousands of mushroom enthusiasts who've enhanced their knowledge and skills through MushroomWise.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map(testimonial => (
+        <TestimonialCard
+          name={testimonial.name}
+          role={testimonial.role}
+          quote={testimonial.quote}
+          imagePlaceholder={testimonial.imagePlaceholder}
+        />
+      ))}
+    </div>
+  </div>
+</section>

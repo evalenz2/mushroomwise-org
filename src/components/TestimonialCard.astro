@@ -1,0 +1,28 @@
+---
+export interface Props {
+  name: string;
+  role?: string;
+  quote: string;
+  imagePlaceholder?: string;
+}
+
+const { 
+  name, 
+  role = "", 
+  quote,
+  imagePlaceholder = "M"
+} = Astro.props;
+---
+
+<div class="bg-white p-6 rounded-lg shadow-md">
+  <div class="flex items-center mb-4">
+    <div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">
+      {imagePlaceholder}
+    </div>
+    <div>
+      <h4 class="font-bold text-gray-900">{name}</h4>
+      {role && <p class="text-gray-600 text-sm">{role}</p>}
+    </div>
+  </div>
+  <p class="text-gray-700 italic">"{quote}"</p>
+</div>
