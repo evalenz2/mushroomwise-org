@@ -1,24 +1,42 @@
 ---
+import { urlFor } from '../lib/sanity';
+import type { Image } from '@sanity/types';
+
 export interface Props {
   name: string;
   role?: string;
   quote: string;
   imagePlaceholder?: string;
+  image?: Image;
 }
 
 const { 
   name, 
   role = "", 
   quote,
-  imagePlaceholder = "M"
+  imagePlaceholder = "M",
+  image
 } = Astro.props;
+
+// Generate image URL if we have a Sanity image
+const imageUrl = image?.asset ? urlFor(image).width(96).height(96).url() : null;
 ---
 
 <div class="bg-white p-6 rounded-lg shadow-md">
   <div class="flex items-center mb-4">
-    <div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">
-      {imagePlaceholder}
-    </div>
+    {imageUrl ? (
+      <img 
+        src={imageUrl} 
+        alt={name}
+        class="w-12 h-12 rounded-full object-cover mr-4"
+        width="48"
+        height="48"
+      />
+    ) : (
+      <div class="w-12 h-12 bg-teal-100 text-teal-700 rounded-full flex items-center justify-center font-bold text-xl mr-4">
+        {imagePlaceholder}
+      </div>
+    )}
     <div>
       <h4 class="font-bold text-gray-900">{name}</h4>
       {role && <p class="text-gray-600 text-sm">{role}</p>}

@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'MushroomWise',
   
-  projectId: 'your-project-id',
+  projectId: 'lx079q5w',
   dataset: 'production',
   
   plugins: [deskTool(), visionTool()],

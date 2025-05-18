@@ -1,7 +1,12 @@
 ---
 import TestimonialCard from './TestimonialCard.astro';
+import { getTestimonials } from '../lib/sanity';
 
-const testimonials = [
+// Fetch testimonials from Sanity
+const testimonials = await getTestimonials();
+
+// Fallback testimonials in case Sanity data is not available
+const fallbackTestimonials = [
   {
     name: "Jamie Lewis",
     role: "Hobby Forager",
@@ -21,6 +26,9 @@ const testimonials = [
     imagePlaceholder: "M"
   }
 ];
+
+// Use Sanity testimonials if available, otherwise use fallback
+const displayTestimonials = testimonials?.length > 0 ? testimonials : fallbackTestimonials;
 ---
 
 <section class="py-16 bg-white">
@@ -33,12 +41,13 @@ const testimonials = [
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {testimonials.map(testimonial => (
+      {displayTestimonials.map(testimonial => (
         <TestimonialCard
           name={testimonial.name}
           role={testimonial.role}
           quote={testimonial.quote}
-          imagePlaceholder={testimonial.imagePlaceholder}
+          imagePlaceholder={testimonial.image?.asset ? undefined : testimonial.name[0]}
+          image={testimonial.image?.asset ? testimonial.image : undefined}
         />
       ))}
     </div>
